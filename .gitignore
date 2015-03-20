@@ -1,3 +1,9 @@
+# Library and cache/log (Sylex)
+/vendor/
+/cache/*
+/logs/*
+silex.log
+
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*
@@ -32,3 +38,18 @@
 
 # Composer PHAR
 /composer.phar
+
+# Content Folder
+/web/uploads/*
+
+# Config Files
+dandelion.yml
+composer.lock
+composer.phar
+Config/config.yml
+
+# Git file
+!.gitkeep
+
+# IDE folders
+.idea/*
