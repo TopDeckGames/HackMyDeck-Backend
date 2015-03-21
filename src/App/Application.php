@@ -143,6 +143,45 @@ class Application extends SilexApplication
             return new UniqueEntityValidator($app['orm.manager_registry']);
         });
         
+        // Security
+        $this->register(
+            new SecurityServiceProvider(),
+            array(
+                'security.role_hierarchy' => array(
+                    'ROLE_SUPER_ADMIN' => array('ROLE_ADMIN'),
+                    'ROLE_ADMIN' => array('ROLE_USER'),
+                    'ROLE_USER' => array('ROLE_INVITED')
+                ),
+                'security.firewalls' => array(
+                    'secured' => array(
+                        'pattern' => '^/',
+                        'anonymous' => array(),
+                        'form' => array(
+                            'login_path' => "/user/login",
+                            'check_path' => "/user/dologin",
+                            "default_target_path" => "/",
+                            //"always_use_default_target_path" => true,
+                            'username_parameter' => 'login[username]',
+                            'password_parameter' => 'login[password]',
+                            "csrf_parameter" => "login[_token]",
+                            "failure_path" => "/",
+                        ),
+                        'logout' => array(
+                            'logout_path' => "/user/logout",
+                            "target" => '/',
+                            "invalidate_session" => true,
+                            "delete_cookies" => array()
+                        ),
+                        'users' => $this->share(function () use ($app) {
+                            return new UserRepository($app['orm.em'], $app['orm.em']->getClassMetadata('App\Entity\User'));
+                        }),
+                    ),
+                ),
+                'security.access_rules' => array(
+                    array('^.*$', 'IS_AUTHENTICATED_ANONYMOUSLY'),
+                )
+            )
+        );
         
         # Managing Errors
         $this->error(function (\Exception $e, $code) use ($app) {
