@@ -1,0 +1,168 @@
+<?php
+
+namespace App;
+
+use App\Doctrine\Persistence\ManagerRegistry;
+use App\Entity\UserRepository;
+use App\Entity\UserLogin;
+use App\Routing\Generator\UrlGenerator;
+use Silex\Application as SilexApplication;
+use Silex\Provider\TwigServiceProvider;
+use Silex\Provider\UrlGeneratorServiceProvider;
+use Silex\Provider\ValidatorServiceProvider;
+use Silex\Provider\FormServiceProvider;
+use Silex\Provider\SessionServiceProvider;
+use Silex\Provider\TranslationServiceProvider;
+use Silex\Provider\DoctrineServiceProvider;
+use Silex\Provider\SecurityServiceProvider;
+use Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
+use Entea\Twig\Extension\AssetExtension;
+use Symfony\Bridge\Doctrine\Form\DoctrineOrmExtension;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Silex\Provider\SwiftmailerServiceProvider;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Yosymfony\Silex\ConfigServiceProvider\ConfigServiceProvider;
+
+class Application extends SilexApplication
+{
+    use SilexApplication\UrlGeneratorTrait;
+
+    public function __construct($debug = false)
+    {
+        parent::__construct();
+        $app = $this;
+        $this["debug"] = $debug;
+
+        # Loading Config file
+        $app->register(new ConfigServiceProvider());
+        $config = $app['configuration']->load(__DIR__ . "/../../config/config.yml");
+
+        # Url generator
+        $this->register(new UrlGeneratorServiceProvider());
+
+        # Webservices
+        $this->after(function (Request $request, Response $response) {
+            $response->headers->set('Access-Control-Allow-Origin', '*');
+        });
+        
+        # Validator
+        $this->register(new ValidatorServiceProvider(), array(
+            'validator.validator_service_ids' => array('doctrine.orm.validator.unique' => 'security.validator.unique_entity_validator')
+        ));
+
+        # Twig templating
+        $this->register(
+            new TwigServiceProvider(),
+            array(
+                'twig.path' => array(__DIR__ . '/../../templates'),
+                'twig.options' => array('cache' => __DIR__ . '/../../var/cache'),
+                'twig.form.templates' => array('form.twig'),
+            )
+        );
+        $this['twig'] = $this->share($this->extend('twig', function($twig, $app) {
+            $twig->addExtension(new AssetExtension($app));
+            $twig->addExtension(new \Twig_Extensions_Extension_Text());
+            $twig->addGlobal('debug', $app['debug']);
+            $twig->addGlobal('user', $app['security']->getToken()->getUser());
+            return $twig;
+        }));
+
+        # Form
+        $this->register(new FormServiceProvider());
+
+        # Session
+        $this->register(new SessionServiceProvider(), array(
+            "session.storage.options" => array(
+                "cookie_lifetime" => 0,
+                "gc_maxlifetime" => 3600
+            )
+        ));
+
+        # Localisation
+        $this->register(new TranslationServiceProvider(), array("locale" => "fr"));
+
+        # Url Generator
+        $app['url_generator'] = $app->share(function ($app) {
+            $app->flush();
+            return new UrlGenerator($app['routes'], $app['request_context']);
+        });
+
+        # Email config
+        $this->register(new SwiftmailerServiceProvider(), array(
+            'swiftmailer.options' => $config->get('mail', array())
+        ));
+
+        # Doctrine DBAL
+        $this->register(
+            new DoctrineServiceProvider(),
+            array(
+                'db.options' => array(
+                    'driver' => $config['db']['driver'],
+                    'host' => $config['db']['host'],
+                    'dbname' => $config['db']['dbname'],
+                    'user' => $config['db']['user'],
+                    'password' => $config['db']['password'],
+                    'driverOptions' => array(1002 => "SET NAMES 'UTF8'")
+                ),
+            )
+        );
+
+        # Doctrine ORM
+        $app->register(new DoctrineOrmServiceProvider(), array(
+            "orm.proxies_dir" => __DIR__ . '/../../cache/doctrine/proxies',
+            "orm.em.options" => array(
+                "mappings" => array(
+                    // Using actual filesystem paths
+                    array(
+                        "type" => 'annotation',
+                        "namespace" => 'App\Entity',
+                        "path" => __DIR__ . '/../App/Entity',
+                        "use_simple_annotation_reader" => false
+                    )
+                ),
+            ),
+        ));
+
+        // Doctrine ORM ManagerRegistry
+        $app['orm.manager_registry'] = $app->share(function($app) {
+            $managerRegistry = new ManagerRegistry(null, array(), array('orm.em'), null, null, 'Doctrine\ORM\Proxy\Proxy');
+            $managerRegistry->setContainer($app);
+            return $managerRegistry;
+        });
+
+        // Form : doctrine orm extension
+        $app['form.extensions'] = $app->share($this->extend('form.extensions', function ($extensions) use ($app) {
+            $extensions[] = new DoctrineOrmExtension($app['orm.manager_registry']);
+            return $extensions;
+        }));
+
+        // ORM unique entity validator
+        $app['security.validator.unique_entity_validator'] = $app->share(function ($app) {
+            return new UniqueEntityValidator($app['orm.manager_registry']);
+        });
+        
+        
+        # Managing Errors
+        $this->error(function (\Exception $e, $code) use ($app) {
+            if ($app['debug']) {
+                return;
+            }
+
+            $page = 404 == $code ? 'errors/404.twig' : 'errors/500.twig';
+            return new Response($app['twig']->render($page, array('code' => $code)), $code);
+        });
+
+        # Mounting controllers
+        $this->setRoutes();
+    }
+
+    /*
+     * setRoutes
+     */
+    function setRoutes() {
+        // Frontend
+        $this->mount("/", new \App\Controller\IndexController());
+    }   
+}
