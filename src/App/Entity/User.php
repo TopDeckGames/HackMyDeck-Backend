@@ -63,7 +63,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $roles;
 
     /**
-     * @ORM\Column(type="integer", name="level")
+     * @ORM\Column(type="integer", name="experience")
      */
     private $experience;
 
@@ -107,6 +107,11 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\OneToMany(targetEntity="App\Entity\UserStructure", mappedBy="user")
      */
     protected $structures;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UserQuest", mappedBy="user")
+     */
+    protected $quests;
 
     /**
      * @ORM\ManyToMany(targetEntity="Device",cascade="persist",inversedBy="users")
@@ -271,6 +276,24 @@ class User implements AdvancedUserInterface, \Serializable
         $roles = explode(",", $this->roles);
         array_push($roles, 'ROLE_USER');
         return array_unique(array_filter($roles));
+    }
+
+    /**
+     * @param mixed $experience
+     * @return mixed
+     */
+    public function setExperience($experience)
+    {
+        $this->experience = $experience;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExperience()
+    {
+        return $this->Experience;
     }
 
     /**
@@ -471,6 +494,41 @@ class User implements AdvancedUserInterface, \Serializable
     public function getStructures()
     {
         return $this->structures;
+    }
+
+    /**
+     * Add Quest
+     *
+     * @param \App\Entity\Quest $quests
+     * @return User
+     */
+    public function addQuest(\App\Entity\Quest $quests)
+    {
+        if(!$this->quests->contains($quests)){
+            $this->quests[] = $quests;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove quests
+     *
+     * @param \App\Entity\Quest $quests
+     */
+    public function removeQuest(\App\Entity\Quest $quests)
+    {
+        $this->quests->removeElement($quests);
+    }
+
+    /**
+     * Get quests
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQuests()
+    {
+        return $this->quests;
     }
 
     /**
