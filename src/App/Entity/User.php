@@ -104,8 +104,13 @@ class User implements AdvancedUserInterface, \Serializable
     protected $logins;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UserStructure", mappedBy="user")
+     */
+    protected $structures;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Device",cascade="persist",inversedBy="users")
-     * @ORM\JoinTable(name="users_devices")
+     * @ORM\JoinTable(name="user_device")
      */
     protected $devices;
     
@@ -432,7 +437,42 @@ class User implements AdvancedUserInterface, \Serializable
     public function removeLogin($login){
         $this->logins->removeElement($login);
     }
-    
+
+    /**
+     * Add Structure
+     *
+     * @param \App\Entity\Structure $structures
+     * @return User
+     */
+    public function addStructure(\App\Entity\Structure $structures)
+    {
+        if(!$this->structures->contains($structures)){
+            $this->structures[] = $structures;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove structures
+     *
+     * @param \App\Entity\Structure $structures
+     */
+    public function removeStructure(\App\Entity\Structure $structures)
+    {
+        $this->structures->removeElement($structures);
+    }
+
+    /**
+     * Get structures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStructures()
+    {
+        return $this->structures;
+    }
+
     /**
      * Add devices
      *

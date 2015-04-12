@@ -32,7 +32,12 @@ class Structure
      * @ORM\Column(type="string", length=30)
      */
     private $description;
-    
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UserStructure", mappedBy="structure")
+     */
+    private $users;
+
     /**
      * Constructor
      */
@@ -94,5 +99,33 @@ class Structure
         return $this;
     }
 
+    /**
+     * Add user
+     * @param User $user
+     * @return Structure
+     */
+    public function addUser(User $user)
+    {
+        $this->users[] = $user;
+        return $this;
+    }
+
+    /**
+     * Remove user
+     * @param User $user
+     */
+    public function removeUser(User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     * @return ArrayCollection $users
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
 
 }
