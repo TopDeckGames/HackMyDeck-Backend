@@ -80,7 +80,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $session_expire;
+    private $token_expire;
     
     /**
      * @ORM\Column(type="datetime")
@@ -289,18 +289,20 @@ class User implements AdvancedUserInterface, \Serializable
     
     /**
      * @param $token
+     * @return mixed
      */
-    public function setSessionExpire($sessionExpire)
+    public function setTokenExpire($tokenExpire)
     {
-        $this->session_expire = $sessionExpire;
+        $this->token_expire = $tokenExpire;
+        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getSessionExpire()
+    public function getTokenExpire()
     {
-        return $this->session_expire;
+        return $this->token_expire;
     }
     
     /**
