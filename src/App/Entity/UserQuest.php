@@ -162,5 +162,14 @@ class UserQuest
         $this->isRejected = $isRejected;
         return $this;
     }
-    
+
+    /**
+     * During the entity update, set the update date
+     *
+     * @ORM\PreUpdate()
+     */
+    public function onPreUpdate()
+    {
+        $this->setUpdated(new \DateTime("now"));
+    }
 }
