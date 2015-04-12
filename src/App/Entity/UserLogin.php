@@ -48,10 +48,12 @@ class UserLogin
     
     /**
      * @param $user
+     * @return mixed
      */
     public function setUser($user)
     {
         $this->user = $user;
+        return $this;
     }
 
     /**
@@ -64,10 +66,12 @@ class UserLogin
     
     /**
      * @param mixed $created
+     * @return mixed
      */
     public function setCreated($created)
     {
         $this->created = $created;
+        return $this;
     }
 
     /**
@@ -80,10 +84,12 @@ class UserLogin
     
     /**
      * @param $action
+     * @return mixed
      */
     public function setAction($action)
     {
         $this->action = $action;
+        return $this;
     }
 
     /**
@@ -96,10 +102,12 @@ class UserLogin
     
     /**
      * @param $context
+     * @return mixed
      */
     public function setContext($context)
     {
         $this->context = $context;
+        return $this;
     }
 
     /**

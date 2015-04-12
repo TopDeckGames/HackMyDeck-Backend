@@ -139,10 +139,12 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @param $username
+     * @return mixed
      */
     public function setUsername($username)
     {
         $this->username = $username;
+        return $this;
     }
 
     /**
@@ -155,10 +157,12 @@ class User implements AdvancedUserInterface, \Serializable
     
     /**
      * @param $firstname
+     * @return mixed
      */
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
+        return $this;
     }
 
     /**
@@ -171,10 +175,12 @@ class User implements AdvancedUserInterface, \Serializable
     
     /**
      * @param $lastname
+     * @return mixed
      */
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
+        return $this;
     }
 
     /**
@@ -187,10 +193,12 @@ class User implements AdvancedUserInterface, \Serializable
     
     /**
      * @param $phone
+     * @return mixed
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
+        return $this;
     }
 
     /**
@@ -216,7 +224,8 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setPassword($password)
     {
-        return $this->password = $password;
+        $this->password = $password;
+        return $this;
     }
 
     /**
@@ -230,18 +239,22 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @param array $role
+     * @return mixed
      */
     public function setRole($role)
     {
         $this->roles = $role;
+        return $this;
     }
     
     /**
      * @param array $roles
+     * @return mixed
      */
     public function setRoles($roles)
     {
         $this->roles = implode(",", $roles);
+        return $this;
     }
 
     /**
@@ -257,10 +270,12 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @param $active
+     * @return mixed
      */
     public function setActive($active)
     {
         $this->active = $active;
+        return $this;
     }
 
     /**
@@ -273,10 +288,12 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @param $token
+     * @return mixed
      */
     public function setToken($token)
     {
         $this->token = $token;
+        return $this;
     }
 
     /**
@@ -307,10 +324,12 @@ class User implements AdvancedUserInterface, \Serializable
     
     /**
      * @param $email
+     * @return mixed
      */
     public function setEmail($email)
     {
         $this->email = $email;
+        return $this;
     }
 
     /**
@@ -323,10 +342,12 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @param mixed $created
+     * @return mixed
      */
     public function setCreated($created)
     {
         $this->created = $created;
+        return $this;
     }
 
     /**
@@ -339,10 +360,12 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @param mixed $lastLogin
+     * @return mixed
      */
     public function setLastLogin($lastLogin)
     {
         $this->lastLogin = $lastLogin;
+        return $this;
     }
 
     /**
@@ -355,10 +378,12 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @param mixed $nbLogin
+     * @return mixed
      */
     public function setNbLogin($nbLogin)
     {
         $this->nbLogin = $nbLogin;
+        return $this;
     }
 
     /**
@@ -371,10 +396,12 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @param $logins
+     * @return mixed
      */
     public function setLogins($logins)
     {
         $this->logins = $logins;
+        return $this;
     }
 
     /**

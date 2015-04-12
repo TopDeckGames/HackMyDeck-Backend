@@ -88,7 +88,6 @@ class Device implements \Serializable {
     public function setSerial($serial)
     {
         $this->serial = $serial;
-
         return $this;
     }
 
@@ -109,7 +108,6 @@ class Device implements \Serializable {
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -130,7 +128,6 @@ class Device implements \Serializable {
     public function setConstructor($constructor)
     {
         $this->constructor = $constructor;
-
         return $this;
     }
 
@@ -151,7 +148,6 @@ class Device implements \Serializable {
     public function addUser(User $user)
     {
         $this->users[] = $user;
-
         return $this;
     }
 
