@@ -114,6 +114,11 @@ class User implements AdvancedUserInterface, \Serializable
     protected $quests;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UserCard", mappedBy="user")
+     */
+    protected $cards;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Device",cascade="persist",inversedBy="users")
      * @ORM\JoinTable(name="user_device")
      */
@@ -529,6 +534,41 @@ class User implements AdvancedUserInterface, \Serializable
     public function getQuests()
     {
         return $this->quests;
+    }
+
+    /**
+     * Add Card
+     *
+     * @param \App\Entity\Card $card
+     * @return User
+     */
+    public function addCard(\App\Entity\Card $card)
+    {
+        if(!$this->cards->contains($card)){
+            $this->cards[] = $card;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove card
+     *
+     * @param \App\Entity\Card $cards
+     */
+    public function removeCard(\App\Entity\Card $cards)
+    {
+        $this->cards->removeElement($cards);
+    }
+
+    /**
+     * Get cards
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCards()
+    {
+        return $this->cards;
     }
 
     /**
