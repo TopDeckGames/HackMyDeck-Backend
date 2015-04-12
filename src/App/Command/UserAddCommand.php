@@ -44,14 +44,14 @@ class UserAddCommand extends \Knp\Command\Command
         };
 
         // username, password, email
-        $username = $dialog->askAndValidate($output, "Username :", $validator, false);
-        $password = $dialog->askAndValidate($output, 'Password :', $validator, false);
-        $email = $dialog->askAndValidate($output, 'Email :', $validator, false);
+        $username = $dialog->askAndValidate($output, "Username : ", $validator, false);
+        $password = $dialog->askAndValidate($output, 'Password : ', $validator, false);
+        $email = $dialog->askAndValidate($output, 'Email : ', $validator, false);
 
         // Other collumn
-        $firstname = $dialog->askAndValidate($output, 'First Name :', $validator, false);
-        $lastname = $dialog->askAndValidate($output, 'Last Name :', $validator, false);
-        $phone = $dialog->askAndValidate($output, 'Phone :', $validator, false);
+        $firstname = $dialog->askAndValidate($output, 'First Name : ', $validator, false);
+        $lastname = $dialog->askAndValidate($output, 'Last Name : ', $validator, false);
+        $phone = $dialog->askAndValidate($output, 'Phone : ', $validator, false);
         
         // role
         $roles = array_keys($app['security.role_hierarchy']);
