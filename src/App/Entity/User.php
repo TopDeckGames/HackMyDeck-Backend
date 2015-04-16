@@ -85,17 +85,17 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @ORM\Column(type="datetime")
      */
-    protected $created;
+    private $created;
 
     /**
      * @ORM\Column(type="datetime", name="last_login", nullable=true)
      */
-    protected $lastLogin;
+    private $lastLogin;
 
     /**
      * @ORM\Column(type="integer", name="nb_login")
      */
-    protected $nbLogin = 0;
+    private $nbLogin = 0;
     
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\UserLogin", mappedBy="user")
@@ -123,6 +123,17 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\JoinTable(name="user_device")
      */
     protected $devices;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Leader",cascade="persist",inversedBy="users")
+     * @ORM\JoinTable(name="user_leaders")
+     */
+    protected $leaders;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Game", mappedBy="user")
+     */
+    protected $games;
     
     /**
      * Constructor
@@ -604,6 +615,76 @@ class User implements AdvancedUserInterface, \Serializable
     public function getDevices()
     {
         return $this->devices;
+    }
+
+    /**
+     * Add leaders
+     *
+     * @param \App\Entity\Leader $leaders
+     * @return User
+     */
+    public function addLeader(\App\Entity\Leader $leaders)
+    {
+        if(!$this->leaders->contains($leaders)){
+            $this->leaders[] = $leaders;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove leaders
+     *
+     * @param \App\Entity\Leader $leaders
+     */
+    public function removeLeader(\App\Entity\Leader $leaders)
+    {
+        $this->leaders->removeElement($leaders);
+    }
+
+    /**
+     * Get leaders
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLeaders()
+    {
+        return $this->leaders;
+    }
+
+    /**
+     * Add games
+     *
+     * @param \App\Entity\Game $games
+     * @return User
+     */
+    public function addGame(\App\Entity\Game $games)
+    {
+        if(!$this->games->contains($games)){
+            $this->games[] = $games;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove games
+     *
+     * @param \App\Entity\Game $games
+     */
+    public function removeGame(\App\Entity\Game $games)
+    {
+        $this->games->removeElement($games);
+    }
+
+    /**
+     * Get games
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGames()
+    {
+        return $this->games;
     }
     
     /**
