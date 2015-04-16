@@ -34,17 +34,17 @@ class UserStructure
     protected $created;
 
     /**
-     * @ORM\Column(type="integer", name="effectif")
+     * @ORM\Column(type="integer")
      */
     private $effectif;
 
     /**
-     * @ORM\Column(type="integer", name="level")
+     * @ORM\Column(type="integer")
      */
     private $level;
 
     /**
-     * @ORM\Column(type="boolean", name="locked")
+     * @ORM\Column(type="boolean")
      */
     private $locked;
     
