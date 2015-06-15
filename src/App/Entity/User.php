@@ -114,6 +114,11 @@ class User implements AdvancedUserInterface, \Serializable
     protected $quests;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UserSkillTree", mappedBy="user")
+     */
+    protected $skilltrees;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\UserCard", mappedBy="user")
      */
     protected $cards;
