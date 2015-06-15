@@ -68,6 +68,11 @@ class User implements AdvancedUserInterface, \Serializable
     private $experience;
 
     /**
+     * @ORM\Column(type="integer", name="credit")
+     */
+    private $credit;
+
+    /**
      * @ORM\Column(type="boolean", name="active")
      */
     private $active;
@@ -310,6 +315,22 @@ class User implements AdvancedUserInterface, \Serializable
     public function getExperience()
     {
         return $this->Experience;
+    }
+
+    /**
+     * @param $credit
+     */
+    public function setCredit($credit)
+    {
+        $this->credit = $credit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCredit()
+    {
+        return $this->credit;
     }
 
     /**
