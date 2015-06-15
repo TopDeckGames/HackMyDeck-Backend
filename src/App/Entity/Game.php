@@ -19,11 +19,6 @@ class Game
     protected $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="games")
-     */
-    protected $user;
-    
-    /**
      * @ORM\Column(type="datetime")
      */
     private $created;
@@ -42,6 +37,11 @@ class Game
      * @ORM\Column(type="integer")
      */
     private $totalTechno;
+
+    /**
+     * @ORM\ManytoOne(targetEntity="App\Entity\Deck", inversedBy="games")
+     */
+    protected $deck;
     
     /**
      * Constructor
@@ -49,25 +49,25 @@ class Game
     public function __construct() {
         $this->setCreated(new \DateTime("now"));
     }
-    
+
     /**
-     * @param $user
+     * @param $leader
      * @return mixed
      */
-    public function setUser($user)
+    public function setLeader($leader)
     {
-        $this->user = $user;
+        $this->leader = $leader;
         return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getUser()
+    public function getLeader()
     {
-        return $this->user;
+        return $this->leader;
     }
-    
+
     /**
      * @param mixed $created
      * @return mixed
@@ -139,5 +139,5 @@ class Game
         $this->totalTechno = $totalTechno;
         return $this;
     }
-    
+
 }

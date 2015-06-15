@@ -125,15 +125,9 @@ class User implements AdvancedUserInterface, \Serializable
     protected $devices;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Leader",cascade="persist",inversedBy="users")
-     * @ORM\JoinTable(name="user_leaders")
+     * @ORM\OneToMany(targetEntity="App\Entity\Deck", mappedBy="user")
      */
-    protected $leaders;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Game", mappedBy="user")
-     */
-    protected $games;
+    protected $decks;
     
     /**
      * Constructor
@@ -145,6 +139,7 @@ class User implements AdvancedUserInterface, \Serializable
         $this->experience = 0;
         $this->logins = new ArrayCollection();
         $this->devices = new ArrayCollection();
+        $this->decks = new ArrayCollection();
     }
 
     /**
@@ -615,41 +610,6 @@ class User implements AdvancedUserInterface, \Serializable
     public function getDevices()
     {
         return $this->devices;
-    }
-
-    /**
-     * Add leaders
-     *
-     * @param \App\Entity\Leader $leaders
-     * @return User
-     */
-    public function addLeader(\App\Entity\Leader $leaders)
-    {
-        if(!$this->leaders->contains($leaders)){
-            $this->leaders[] = $leaders;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Remove leaders
-     *
-     * @param \App\Entity\Leader $leaders
-     */
-    public function removeLeader(\App\Entity\Leader $leaders)
-    {
-        $this->leaders->removeElement($leaders);
-    }
-
-    /**
-     * Get leaders
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getLeaders()
-    {
-        return $this->leaders;
     }
 
     /**

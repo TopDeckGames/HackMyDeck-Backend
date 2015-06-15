@@ -59,6 +59,11 @@ class Card
     private $users;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\DeckCard", mappedBy="card")
+     */
+    private $decks;
+
+    /**
      * Constructor
      */
     public function __construct() {

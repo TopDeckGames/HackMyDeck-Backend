@@ -40,16 +40,17 @@ class Leader {
      */
     protected $price;
 
-    /** 
-     * @ORM\ManyToMany(targetEntity="User",mappedBy="leaders")
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Deck", mappedBy="leader")
      */
-    protected $users;
+    protected $decks;
 
     /**
      * Constructor
      */
     public function __construct(){
         $this->users = new ArrayCollection();
+        $this->decks = new ArrayCollection();
     }
 
     /**
@@ -82,6 +83,86 @@ class Leader {
     }
 
     /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGame()
+    {
+        return $this->game;
+    }
+
+    /**
+     * @param mixed $game
+     */
+    public function setGame($game)
+    {
+        $this->game = $game;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param mixed $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEnergy()
+    {
+        return $this->energy;
+    }
+
+    /**
+     * @param mixed $energy
+     */
+    public function setEnergy($energy)
+    {
+        $this->energy = $energy;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEffect()
+    {
+        return $this->effect;
+    }
+
+    /**
+     * @param mixed $effect
+     */
+    public function setEffect($effect)
+    {
+        $this->effect = $effect;
+    }
+
+    /**
      * Add user
      * @param User $user
      * @return Device
@@ -108,6 +189,35 @@ class Leader {
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add deck
+     * @param Deck $deck
+     * @return Leader
+     */
+    public function addDeck(Deck $deck)
+    {
+        $this->decks[] = $deck;
+        return $this;
+    }
+
+    /**
+     * Remove deck
+     * @param Deck $deck
+     */
+    public function removeDeck(Deck $deck)
+    {
+        $this->decks->removeElement($deck);
+    }
+
+    /**
+     * Get users
+     * @return ArrayCollection $users
+     */
+    public function getDecks()
+    {
+        return $this->decks;
     }
 
     /**
