@@ -39,15 +39,41 @@ class Game
     private $totalTechno;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $winner;
+
+    /**
      * @ORM\ManytoOne(targetEntity="App\Entity\Deck", inversedBy="games")
      */
-    protected $deck;
+    protected $firstToPlay;
+
+    /**
+     * @ORM\ManytoOne(targetEntity="App\Entity\Deck", inversedBy="games")
+     */
+    protected $secondToPlay;
     
     /**
      * Constructor
      */
     public function __construct() {
         $this->setCreated(new \DateTime("now"));
+    }
+
+    /**
+     * @param $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -138,6 +164,22 @@ class Game
     {
         $this->totalTechno = $totalTechno;
         return $this;
+    }
+
+    /**
+     * @param $winner
+     */
+    public function setWinner($winner)
+    {
+        $this->winner = $winner;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWinner()
+    {
+        return $this->winner;
     }
 
 }
