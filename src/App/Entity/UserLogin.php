@@ -35,7 +35,7 @@ class UserLogin
     private $action;
     
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=50)
      */
     private $context;
     

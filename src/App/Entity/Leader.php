@@ -16,27 +16,27 @@ class Leader {
     protected $id;
 
     /** 
-     * @ORM\Column(type="string", length=64) 
+     * @ORM\Column(type="string", length=50)
      */
     protected $name;
 
     /** 
-     * @ORM\Column(type="string", length=64) 
+     * @ORM\Column(type="string", length=255)
      */
     protected $description;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=255)
      */
     protected $effect;
 
     /**
-     * @ORM\Column(type="integer", length=64)
+     * @ORM\Column(type="integer")
      */
     protected $energy;
 
     /**
-     * @ORM\Column(type="integer", length=64)
+     * @ORM\Column(type="integer")
      */
     protected $price;
 

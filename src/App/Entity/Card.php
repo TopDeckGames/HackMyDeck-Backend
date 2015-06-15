@@ -19,17 +19,17 @@ class Card
     protected $id;
     
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=50)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="integer")
      */
     private $type;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=255)
      */
     private $description;
 
