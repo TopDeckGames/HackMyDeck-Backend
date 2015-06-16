@@ -69,6 +69,21 @@ class Card
     protected $enhancement;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Unit", mappedBy="card")
+     */
+    protected $units;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Technology", mappedBy="card")
+     */
+    protected $technologies;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Trap", mappedBy="card")
+     */
+    protected $traps;
+
+    /**
      * Constructor
      */
     public function __construct() {
