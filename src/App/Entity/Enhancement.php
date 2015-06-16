@@ -54,6 +54,16 @@ class Enhancement
     protected $parent;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Card", mappedBy="enhancement")
+     */
+    protected $unlockCards;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UserSkillTree", mappedBy="lastEnhancement")
+     */
+    protected $userSkillTree;
+
+    /**
      * Constructor
      */
     public function __construct() {

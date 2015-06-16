@@ -27,6 +27,11 @@ class UserSkillTree
      * @ORM\ManyToOne(targetEntity="App\Entity\SkillTree",inversedBy="users")
      */
     protected $skill;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Enhancement",inversedBy="userSkillTree")
+     */
+    protected $lastEnhancement;
     
     /**
      * @ORM\Column(type="datetime")

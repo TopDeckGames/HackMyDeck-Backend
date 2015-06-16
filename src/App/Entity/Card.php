@@ -64,6 +64,11 @@ class Card
     private $decks;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Enhancement", inversedBy="unlockCards")
+     */
+    protected $enhancement;
+
+    /**
      * Constructor
      */
     public function __construct() {
