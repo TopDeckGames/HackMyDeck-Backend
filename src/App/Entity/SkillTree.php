@@ -35,6 +35,11 @@ class SkillTree
     private $users;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Enhancement", mappedBy="skillTree")
+     */
+    private $enhancements;
+
+    /**
      * Constructor
      */
     public function __construct() {
