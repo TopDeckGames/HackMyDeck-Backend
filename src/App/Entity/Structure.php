@@ -29,6 +29,23 @@ class Structure
     private $type;
 
     /**
+     * @ORM\Column(type="float")
+     */
+    private $posX;
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $posY;
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $width;
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $height;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $description;
@@ -43,6 +60,22 @@ class Structure
      */
     public function __construct() {
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -80,6 +113,71 @@ class Structure
         $this->type = $type;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPosX()
+    {
+        return $this->posX;
+    }
+
+    /**
+     * @param mixed $posX
+     */
+    public function setPosX($posX)
+    {
+        $this->posX = $posX;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPosY()
+    {
+        return $this->posY;
+    }
+
+    /**
+     * @param mixed $posY
+     */
+    public function setPosY($posY)
+    {
+        $this->posY = $posY;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * @param mixed $width
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
+     * @param mixed $height
+     */
+    public function setHeight($height)
+    {
+        $this->height = $height;
+    }
+
 
     /**
      * @return mixed
