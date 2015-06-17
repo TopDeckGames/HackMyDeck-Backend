@@ -6,10 +6,10 @@ use Doctrine\ORM\Mapping AS ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(
- *      name="user_skilltree",
+ *      name="user_enhancement",
  * )
  */
-class UserSkillTree
+class UserEnhancement
 {
     /**
      * @ORM\Id
@@ -19,14 +19,14 @@ class UserSkillTree
     protected $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="skilltrees")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="enhancements")
      */
     protected $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\SkillTree",inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Enhancement",inversedBy="users")
      */
-    protected $skill;
+    protected $enhancement;
     
     /**
      * @ORM\Column(type="datetime")
@@ -39,19 +39,9 @@ class UserSkillTree
     protected $updated;
 
     /**
-     * @ORM\Column(type="boolean", name="on_current_research")
-     */
-    private $onCurrentResearch;
-
-    /**
      * @ORM\Column(type="boolean", name="unlocked")
      */
     private $unlocked;
-
-    /**
-     * @ORM\Column(type="integer", name="effectif_allocated")
-     */
-    private $effectifAllocated;
     
     /**
      * Constructor
@@ -78,24 +68,7 @@ class UserSkillTree
         return $this->user;
     }
 
-    /**
-     * @param SkillTree $skill
-     * @return mixed
-     */
-    public function setSkill($skill)
-    {
-        $this->skill = $skill;
-        return $this;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getSkill()
-    {
-        return $this->skill;
-    }
-    
     /**
      * @param mixed $created
      * @return mixed
@@ -133,22 +106,6 @@ class UserSkillTree
     }
 
     /**
-     * @return mixed
-     */
-    public function getOnCurrentResearch()
-    {
-        return $this->onCurrentResearch;
-    }
-
-    /**
-     * @param mixed $onCurrentResearch
-     */
-    public function setOnCurrentResearch($onCurrentResearch)
-    {
-        $this->onCurrentResearch = $onCurrentResearch;
-    }
-
-    /**
      * @return boolean
      */
     public function getUnlocked()
@@ -164,22 +121,6 @@ class UserSkillTree
     {
         $this->unlocked = $unlocked;
         return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEffectifAllocated()
-    {
-        return $this->effectifAllocated;
-    }
-
-    /**
-     * @param mixed $effectifAllocated
-     */
-    public function setEffectifAllocated($effectifAllocated)
-    {
-        $this->effectifAllocated = $effectifAllocated;
     }
 
     /**

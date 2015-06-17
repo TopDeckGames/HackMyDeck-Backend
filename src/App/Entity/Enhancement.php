@@ -59,9 +59,9 @@ class Enhancement
     protected $unlockCards;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\UserSkillTree", mappedBy="lastEnhancement")
+     * @ORM\OneToMany(targetEntity="App\Entity\UserEnhancement", mappedBy="enhancement")
      */
-    protected $userSkillTree;
+    private $users;
 
     /**
      * Constructor
