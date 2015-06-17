@@ -44,7 +44,7 @@ class UserSkillTree
     protected $updated;
 
     /**
-     * @ORM\Column(type="boolean", name="unlocked")
+     * @ORM\Column(type="boolean", name="on_current_research")
      */
     private $onCurrentResearch;
 
