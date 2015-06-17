@@ -46,6 +46,11 @@ class UserSkillTree
     /**
      * @ORM\Column(type="boolean", name="unlocked")
      */
+    private $onCurrentResearch;
+
+    /**
+     * @ORM\Column(type="boolean", name="unlocked")
+     */
     private $unlocked;
 
     /**
@@ -82,7 +87,7 @@ class UserSkillTree
      * @param SkillTree $skill
      * @return mixed
      */
-    public function setSkillTree($skill)
+    public function setSkill($skill)
     {
         $this->skill = $skill;
         return $this;
@@ -91,9 +96,25 @@ class UserSkillTree
     /**
      * @return mixed
      */
-    public function getSkillTree()
+    public function getSkill()
     {
         return $this->skill;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastEnhancement()
+    {
+        return $this->lastEnhancement;
+    }
+
+    /**
+     * @param mixed $lastEnhancement
+     */
+    public function setLastEnhancement($lastEnhancement)
+    {
+        $this->lastEnhancement = $lastEnhancement;
     }
     
     /**
@@ -130,6 +151,22 @@ class UserSkillTree
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOnCurrentResearch()
+    {
+        return $this->onCurrentResearch;
+    }
+
+    /**
+     * @param mixed $onCurrentResearch
+     */
+    public function setOnCurrentResearch($onCurrentResearch)
+    {
+        $this->onCurrentResearch = $onCurrentResearch;
     }
 
     /**
