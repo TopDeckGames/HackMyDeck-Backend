@@ -29,19 +29,19 @@ class Structure
     private $type;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", precision=4, scale=4)
      */
     private $posX;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", precision=4, scale=4)
      */
     private $posY;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", precision=4, scale=4)
      */
     private $width;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", precision=4, scale=4)
      */
     private $height;
 
