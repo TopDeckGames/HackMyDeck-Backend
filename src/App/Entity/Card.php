@@ -49,7 +49,7 @@ class Card
     private $isBuyable;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="integer")
      */
     private $rarity;
 
