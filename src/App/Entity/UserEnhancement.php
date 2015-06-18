@@ -42,6 +42,11 @@ class UserEnhancement
      * @ORM\Column(type="boolean", name="unlocked")
      */
     private $unlocked;
+
+    /**
+     * @ORM\Column(type="boolean", name="on_current_research")
+     */
+    private $onCurrentResearch;
     
     /**
      * Constructor
@@ -124,6 +129,22 @@ class UserEnhancement
     }
 
     /**
+     * @return mixed
+     */
+    public function getOnCurrentResearch()
+    {
+        return $this->onCurrentResearch;
+    }
+
+    /**
+     * @param mixed $onCurrentResearch
+     */
+    public function setOnCurrentResearch($onCurrentResearch)
+    {
+        $this->onCurrentResearch = $onCurrentResearch;
+    }
+
+    /**
      * During the entity update, set the update date
      *
      * @ORM\PreUpdate()
@@ -132,4 +153,5 @@ class UserEnhancement
     {
         $this->setUpdated(new \DateTime("now"));
     }
+
 }

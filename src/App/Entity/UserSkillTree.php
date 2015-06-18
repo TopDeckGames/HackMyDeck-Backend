@@ -133,22 +133,6 @@ class UserSkillTree
     }
 
     /**
-     * @return mixed
-     */
-    public function getOnCurrentResearch()
-    {
-        return $this->onCurrentResearch;
-    }
-
-    /**
-     * @param mixed $onCurrentResearch
-     */
-    public function setOnCurrentResearch($onCurrentResearch)
-    {
-        $this->onCurrentResearch = $onCurrentResearch;
-    }
-
-    /**
      * @return boolean
      */
     public function getUnlocked()
