@@ -92,11 +92,40 @@ class Card
      * Constructor
      */
     public function __construct() {
-
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->decks = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->units = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->technologies = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->traps = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * @return mixed
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Card
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
      */
     public function getTitle()
     {
@@ -104,17 +133,22 @@ class Card
     }
 
     /**
-     * @param mixed $title
-     * @return mixed
+     * Set type
+     *
+     * @param integer $type
+     * @return Card
      */
-    public function setTitle($title)
+    public function setType($type)
     {
-        $this->title = $title;
+        $this->type = $type;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get type
+     *
+     * @return integer
      */
     public function getType()
     {
@@ -122,17 +156,22 @@ class Card
     }
 
     /**
-     * @param mixed $type
-     * @return mixed
+     * Set description
+     *
+     * @param string $description
+     * @return Card
      */
-    public function setType($type)
+    public function setDescription($description)
     {
-        $this->type = $type;
+        $this->description = $description;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get description
+     *
+     * @return string
      */
     public function getDescription()
     {
@@ -140,27 +179,22 @@ class Card
     }
 
     /**
-     * @param mixed $description
-     * @return mixed
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-        return $this;
-    }
-
-    /**
-     * @param mixed $costInGame
-     * @return mixed
+     * Set costInGame
+     *
+     * @param integer $costInGame
+     * @return Card
      */
     public function setCostInGame($costInGame)
     {
         $this->costInGame = $costInGame;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get costInGame
+     *
+     * @return integer
      */
     public function getCostInGame()
     {
@@ -168,17 +202,22 @@ class Card
     }
 
     /**
-     * @param mixed $costInStore
-     * @return mixed
+     * Set costInStore
+     *
+     * @param integer $costInStore
+     * @return Card
      */
     public function setCostInStore($costInStore)
     {
         $this->costInStore = $costInStore;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get costInStore
+     *
+     * @return integer
      */
     public function getCostInStore()
     {
@@ -186,7 +225,22 @@ class Card
     }
 
     /**
-     * @return mixed
+     * Set isBuyable
+     *
+     * @param boolean $isBuyable
+     * @return Card
+     */
+    public function setIsBuyable($isBuyable)
+    {
+        $this->isBuyable = $isBuyable;
+
+        return $this;
+    }
+
+    /**
+     * Get isBuyable
+     *
+     * @return boolean
      */
     public function getIsBuyable()
     {
@@ -194,17 +248,22 @@ class Card
     }
 
     /**
-     * @param mixed $isBuyable
-     * @return mixed
+     * Set rarity
+     *
+     * @param integer $rarity
+     * @return Card
      */
-    public function setIsBuyable($isBuyable)
+    public function setRarity($rarity)
     {
-        $this->isBuyable = $isBuyable;
+        $this->rarity = $rarity;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get rarity
+     *
+     * @return integer
      */
     public function getRarity()
     {
@@ -212,42 +271,214 @@ class Card
     }
 
     /**
-     * @param mixed $rarity
-     * @return mixed
+     * Add users
+     *
+     * @param \App\Entity\UserCard $users
+     * @return Card
      */
-    public function setRarity($rarity)
+    public function addUser(\App\Entity\UserCard $users)
     {
-        $this->rarity = $rarity;
+        $this->users[] = $users;
+
         return $this;
     }
 
     /**
-     * Add user
-     * @param User $user
-     * @return Structure
+     * Remove users
+     *
+     * @param \App\Entity\UserCard $users
      */
-    public function addUser(User $user)
+    public function removeUser(\App\Entity\UserCard $users)
     {
-        $this->users[] = $user;
-        return $this;
-    }
-
-    /**
-     * Remove user
-     * @param User $user
-     */
-    public function removeUser(User $user)
-    {
-        $this->users->removeElement($user);
+        $this->users->removeElement($users);
     }
 
     /**
      * Get users
-     * @return ArrayCollection $users
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add decks
+     *
+     * @param \App\Entity\DeckCard $decks
+     * @return Card
+     */
+    public function addDeck(\App\Entity\DeckCard $decks)
+    {
+        $this->decks[] = $decks;
+
+        return $this;
+    }
+
+    /**
+     * Remove decks
+     *
+     * @param \App\Entity\DeckCard $decks
+     */
+    public function removeDeck(\App\Entity\DeckCard $decks)
+    {
+        $this->decks->removeElement($decks);
+    }
+
+    /**
+     * Get decks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDecks()
+    {
+        return $this->decks;
+    }
+
+    /**
+     * Set enhancement
+     *
+     * @param \App\Entity\Enhancement $enhancement
+     * @return Card
+     */
+    public function setEnhancement(\App\Entity\Enhancement $enhancement = null)
+    {
+        $this->enhancement = $enhancement;
+
+        return $this;
+    }
+
+    /**
+     * Get enhancement
+     *
+     * @return \App\Entity\Enhancement
+     */
+    public function getEnhancement()
+    {
+        return $this->enhancement;
+    }
+
+    /**
+     * Add units
+     *
+     * @param \App\Entity\Unit $units
+     * @return Card
+     */
+    public function addUnit(\App\Entity\Unit $units)
+    {
+        $this->units[] = $units;
+
+        return $this;
+    }
+
+    /**
+     * Remove units
+     *
+     * @param \App\Entity\Unit $units
+     */
+    public function removeUnit(\App\Entity\Unit $units)
+    {
+        $this->units->removeElement($units);
+    }
+
+    /**
+     * Get units
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUnits()
+    {
+        return $this->units;
+    }
+
+    /**
+     * Add technologies
+     *
+     * @param \App\Entity\Technology $technologies
+     * @return Card
+     */
+    public function addTechnology(\App\Entity\Technology $technologies)
+    {
+        $this->technologies[] = $technologies;
+
+        return $this;
+    }
+
+    /**
+     * Remove technologies
+     *
+     * @param \App\Entity\Technology $technologies
+     */
+    public function removeTechnology(\App\Entity\Technology $technologies)
+    {
+        $this->technologies->removeElement($technologies);
+    }
+
+    /**
+     * Get technologies
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTechnologies()
+    {
+        return $this->technologies;
+    }
+
+    /**
+     * Add traps
+     *
+     * @param \App\Entity\Trap $traps
+     * @return Card
+     */
+    public function addTrap(\App\Entity\Trap $traps)
+    {
+        $this->traps[] = $traps;
+
+        return $this;
+    }
+
+    /**
+     * Remove traps
+     *
+     * @param \App\Entity\Trap $traps
+     */
+    public function removeTrap(\App\Entity\Trap $traps)
+    {
+        $this->traps->removeElement($traps);
+    }
+
+    /**
+     * Get traps
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTraps()
+    {
+        return $this->traps;
+    }
+
+    /**
+     * Set version
+     *
+     * @param \App\Entity\Version $version
+     * @return Card
+     */
+    public function setVersion(\App\Entity\Version $version = null)
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
+     * Get version
+     *
+     * @return \App\Entity\Version
+     */
+    public function getVersion()
+    {
+        return $this->version;
     }
 
 }

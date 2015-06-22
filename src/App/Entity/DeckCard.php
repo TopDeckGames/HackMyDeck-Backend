@@ -39,44 +39,33 @@ class DeckCard
     public function __construct() {
 
     }
-    
+
     /**
-     * @param $deck
-     * @return mixed
+     * Get id
+     *
+     * @return integer
      */
-    public function setDeck($deck)
+    public function getId()
     {
-        $this->deck = $deck;
+        return $this->id;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param integer $quantity
+     * @return DeckCard
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
         return $this;
     }
 
     /**
-     * @return mixed
-     */
-    public function getDeck()
-    {
-        return $this->deck;
-    }
-
-    /**
-     * @param $card
-     * @return mixed
-     */
-    public function setCard($card)
-    {
-        $this->card = $card;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCard()
-    {
-        return $this->card;
-    }
-
-    /**
+     * Get quantity
+     *
      * @return integer
      */
     public function getQuantity()
@@ -85,13 +74,49 @@ class DeckCard
     }
 
     /**
-     * @param integer $quantity
-     * @return mixed
+     * Set deck
+     *
+     * @param \App\Entity\Deck $deck
+     * @return DeckCard
      */
-    public function setQuantity($quantity)
+    public function setDeck(\App\Entity\Deck $deck = null)
     {
-        $this->quantity = $quantity;
+        $this->deck = $deck;
+
         return $this;
+    }
+
+    /**
+     * Get deck
+     *
+     * @return \App\Entity\Deck
+     */
+    public function getDeck()
+    {
+        return $this->deck;
+    }
+
+    /**
+     * Set card
+     *
+     * @param \App\Entity\Card $card
+     * @return DeckCard
+     */
+    public function setCard(\App\Entity\Card $card = null)
+    {
+        $this->card = $card;
+
+        return $this;
+    }
+
+    /**
+     * Get card
+     *
+     * @return \App\Entity\Card
+     */
+    public function getCard()
+    {
+        return $this->card;
     }
 
 }

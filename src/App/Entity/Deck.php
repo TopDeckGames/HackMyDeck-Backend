@@ -56,11 +56,15 @@ class Deck {
 
     function __construct()
     {
-        $this->games = new ArrayCollection();
+        $this->games = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->gamesSecond = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cards = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * @return mixed
+     * Get id
+     *
+     * @return integer
      */
     public function getId()
     {
@@ -68,15 +72,22 @@ class Deck {
     }
 
     /**
-     * @param mixed $id
+     * Set name
+     *
+     * @param string $name
+     * @return Deck
      */
-    public function setId($id)
+    public function setName($name)
     {
-        $this->id = $id;
+        $this->name = $name;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get name
+     *
+     * @return string
      */
     public function getName()
     {
@@ -84,15 +95,22 @@ class Deck {
     }
 
     /**
-     * @param mixed $name
+     * Set color
+     *
+     * @param string $color
+     * @return Deck
      */
-    public function setName($name)
+    public function setColor($color)
     {
-        $this->name = $name;
+        $this->color = $color;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get color
+     *
+     * @return string
      */
     public function getColor()
     {
@@ -100,40 +118,148 @@ class Deck {
     }
 
     /**
-     * @param mixed $color
+     * Add games
+     *
+     * @param \App\Entity\Game $games
+     * @return Deck
      */
-    public function setColor($color)
+    public function addGame(\App\Entity\Game $games)
     {
-        $this->color = $color;
-    }
+        $this->games[] = $games;
 
-    /**
-     * Add game
-     * @param Game $game
-     * @return Leader
-     */
-    public function addGame(Game $game)
-    {
-        $this->games[] = $game;
         return $this;
     }
 
     /**
-     * Remove game
-     * @param Game $game
+     * Remove games
+     *
+     * @param \App\Entity\Game $games
      */
-    public function removeGame(Game $game)
+    public function removeGame(\App\Entity\Game $games)
     {
-        $this->games->removeElement($game);
+        $this->games->removeElement($games);
     }
 
     /**
      * Get games
-     * @return ArrayCollection $games
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getGames()
     {
         return $this->games;
+    }
+
+    /**
+     * Add gamesSecond
+     *
+     * @param \App\Entity\Game $gamesSecond
+     * @return Deck
+     */
+    public function addGamesSecond(\App\Entity\Game $gamesSecond)
+    {
+        $this->gamesSecond[] = $gamesSecond;
+
+        return $this;
+    }
+
+    /**
+     * Remove gamesSecond
+     *
+     * @param \App\Entity\Game $gamesSecond
+     */
+    public function removeGamesSecond(\App\Entity\Game $gamesSecond)
+    {
+        $this->gamesSecond->removeElement($gamesSecond);
+    }
+
+    /**
+     * Get gamesSecond
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGamesSecond()
+    {
+        return $this->gamesSecond;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \App\Entity\User $user
+     * @return Deck
+     */
+    public function setUser(\App\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \App\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set leader
+     *
+     * @param \App\Entity\Leader $leader
+     * @return Deck
+     */
+    public function setLeader(\App\Entity\Leader $leader = null)
+    {
+        $this->leader = $leader;
+
+        return $this;
+    }
+
+    /**
+     * Get leader
+     *
+     * @return \App\Entity\Leader
+     */
+    public function getLeader()
+    {
+        return $this->leader;
+    }
+
+    /**
+     * Add cards
+     *
+     * @param \App\Entity\DeckCard $cards
+     * @return Deck
+     */
+    public function addCard(\App\Entity\DeckCard $cards)
+    {
+        $this->cards[] = $cards;
+
+        return $this;
+    }
+
+    /**
+     * Remove cards
+     *
+     * @param \App\Entity\DeckCard $cards
+     */
+    public function removeCard(\App\Entity\DeckCard $cards)
+    {
+        $this->cards->removeElement($cards);
+    }
+
+    /**
+     * Get cards
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCards()
+    {
+        return $this->cards;
     }
 
 }
