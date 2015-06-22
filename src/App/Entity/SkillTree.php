@@ -40,6 +40,11 @@ class SkillTree
     private $enhancements;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Version", inversedBy="skillTrees")
+     */
+    private $version;
+
+    /**
      * Constructor
      */
     public function __construct() {

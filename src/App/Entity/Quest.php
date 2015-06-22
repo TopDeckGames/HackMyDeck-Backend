@@ -54,6 +54,11 @@ class Quest
     private $users;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Version", inversedBy="quests")
+     */
+    private $version;
+
+    /**
      * Constructor
      */
     public function __construct() {

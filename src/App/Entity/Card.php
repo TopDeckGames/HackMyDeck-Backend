@@ -84,6 +84,11 @@ class Card
     protected $traps;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Version", inversedBy="cards")
+     */
+    private $version;
+
+    /**
      * Constructor
      */
     public function __construct() {

@@ -39,7 +39,7 @@ class Enhancement
     private $cost;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="integer")
      */
     private $time;
 
@@ -62,6 +62,11 @@ class Enhancement
      * @ORM\OneToMany(targetEntity="App\Entity\UserEnhancement", mappedBy="enhancement")
      */
     private $users;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Version", inversedBy="enhancements")
+     */
+    private $version;
 
     /**
      * Constructor

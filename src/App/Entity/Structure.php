@@ -56,6 +56,11 @@ class Structure
     private $users;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Version", inversedBy="Structure")
+     */
+    private $version;
+
+    /**
      * Constructor
      */
     public function __construct() {
