@@ -73,7 +73,8 @@ class Device implements \Serializable {
 
     /**
      * Get id
-     * @return integer 
+     *
+     * @return integer
      */
     public function getId()
     {
@@ -82,18 +83,21 @@ class Device implements \Serializable {
 
     /**
      * Set serial
+     *
      * @param string $serial
      * @return Device
      */
     public function setSerial($serial)
     {
         $this->serial = $serial;
+
         return $this;
     }
 
     /**
      * Get serial
-     * @return string 
+     *
+     * @return string
      */
     public function getSerial()
     {
@@ -102,18 +106,21 @@ class Device implements \Serializable {
 
     /**
      * Set name
+     *
      * @param string $name
      * @return Device
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
      * Get name
-     * @return string 
+     *
+     * @return string
      */
     public function getName()
     {
@@ -122,18 +129,21 @@ class Device implements \Serializable {
 
     /**
      * Set constructor
+     *
      * @param string $constructor
      * @return Device
      */
     public function setConstructor($constructor)
     {
         $this->constructor = $constructor;
+
         return $this;
     }
 
     /**
      * Get constructor
-     * @return string 
+     *
+     * @return string
      */
     public function getConstructor()
     {
@@ -141,28 +151,32 @@ class Device implements \Serializable {
     }
 
     /**
-     * Add user
-     * @param User $user
+     * Add users
+     *
+     * @param \App\Entity\User $users
      * @return Device
      */
-    public function addUser(User $user)
+    public function addUser(\App\Entity\User $users)
     {
-        $this->users[] = $user;
+        $this->users[] = $users;
+
         return $this;
     }
 
     /**
-     * Remove user
-     * @param User $user
+     * Remove users
+     *
+     * @param \App\Entity\User $users
      */
-    public function removeUser(User $user)
+    public function removeUser(\App\Entity\User $users)
     {
-        $this->users->removeElement($user);
+        $this->users->removeElement($users);
     }
 
     /**
      * Get users
-     * @return ArrayCollection $users
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsers()
     {
