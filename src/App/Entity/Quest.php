@@ -62,11 +62,36 @@ class Quest
      * Constructor
      */
     public function __construct() {
-
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * @return mixed
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Quest
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
      */
     public function getName()
     {
@@ -74,17 +99,22 @@ class Quest
     }
 
     /**
-     * @param mixed $name
-     * @return mixed
+     * Set type
+     *
+     * @param integer $type
+     * @return Quest
      */
-    public function setName($name)
+    public function setType($type)
     {
-        $this->name = $name;
+        $this->type = $type;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get type
+     *
+     * @return integer
      */
     public function getType()
     {
@@ -92,17 +122,22 @@ class Quest
     }
 
     /**
-     * @param mixed $type
-     * @return mixed
+     * Set description
+     *
+     * @param string $description
+     * @return Quest
      */
-    public function setType($type)
+    public function setDescription($description)
     {
-        $this->type = $type;
+        $this->description = $description;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get description
+     *
+     * @return string
      */
     public function getDescription()
     {
@@ -110,27 +145,22 @@ class Quest
     }
 
     /**
-     * @param mixed $description
-     * @return mixed
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-        return $this;
-    }
-
-    /**
-     * @param mixed $level
-     * @return mixed
+     * Set level
+     *
+     * @param integer $level
+     * @return Quest
      */
     public function setLevel($level)
     {
         $this->level = $level;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get level
+     *
+     * @return integer
      */
     public function getLevel()
     {
@@ -138,17 +168,22 @@ class Quest
     }
 
     /**
-     * @param mixed $credit
-     * @return mixed
+     * Set credit
+     *
+     * @param integer $credit
+     * @return Quest
      */
     public function setCredit($credit)
     {
         $this->credit = $credit;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get credit
+     *
+     * @return integer
      */
     public function getCredit()
     {
@@ -156,7 +191,22 @@ class Quest
     }
 
     /**
-     * @return mixed
+     * Set conditions
+     *
+     * @param string $conditions
+     * @return Quest
+     */
+    public function setConditions($conditions)
+    {
+        $this->conditions = $conditions;
+
+        return $this;
+    }
+
+    /**
+     * Get conditions
+     *
+     * @return string
      */
     public function getConditions()
     {
@@ -164,43 +214,59 @@ class Quest
     }
 
     /**
-     * @param mixed $conditions
-     * @return mixed
+     * Add users
+     *
+     * @param \App\Entity\UserQuest $users
+     * @return Quest
      */
-    public function setConditions($conditions)
+    public function addUser(\App\Entity\UserQuest $users)
     {
-        $this->conditions = $conditions;
-        return $this;
-    }
+        $this->users[] = $users;
 
-
-    /**
-     * Add user
-     * @param User $user
-     * @return Structure
-     */
-    public function addUser(User $user)
-    {
-        $this->users[] = $user;
         return $this;
     }
 
     /**
-     * Remove user
-     * @param User $user
+     * Remove users
+     *
+     * @param \App\Entity\UserQuest $users
      */
-    public function removeUser(User $user)
+    public function removeUser(\App\Entity\UserQuest $users)
     {
-        $this->users->removeElement($user);
+        $this->users->removeElement($users);
     }
 
     /**
      * Get users
-     * @return ArrayCollection $users
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set version
+     *
+     * @param \App\Entity\Version $version
+     * @return Quest
+     */
+    public function setVersion(\App\Entity\Version $version = null)
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
+     * Get version
+     *
+     * @return \App\Entity\Version
+     */
+    public function getVersion()
+    {
+        return $this->version;
     }
 
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping AS ORM;
 
 /**
@@ -64,11 +65,13 @@ class Structure
      * Constructor
      */
     public function __construct() {
-
+        $this->users = new ArrayCollection();
     }
 
     /**
-     * @return mixed
+     * Get id
+     *
+     * @return integer
      */
     public function getId()
     {
@@ -76,15 +79,22 @@ class Structure
     }
 
     /**
-     * @param mixed $id
+     * Set name
+     *
+     * @param string $name
+     * @return Structure
      */
-    public function setId($id)
+    public function setName($name)
     {
-        $this->id = $id;
+        $this->name = $name;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get name
+     *
+     * @return string
      */
     public function getName()
     {
@@ -92,17 +102,22 @@ class Structure
     }
 
     /**
-     * @param mixed $name
-     * @return mixed
+     * Set type
+     *
+     * @param integer $type
+     * @return Structure
      */
-    public function setName($name)
+    public function setType($type)
     {
-        $this->name = $name;
+        $this->type = $type;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get type
+     *
+     * @return integer
      */
     public function getType()
     {
@@ -110,17 +125,22 @@ class Structure
     }
 
     /**
-     * @param mixed $type
-     * @return mixed
+     * Set posX
+     *
+     * @param float $posX
+     * @return Structure
      */
-    public function setType($type)
+    public function setPosX($posX)
     {
-        $this->type = $type;
+        $this->posX = $posX;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get posX
+     *
+     * @return float
      */
     public function getPosX()
     {
@@ -128,15 +148,22 @@ class Structure
     }
 
     /**
-     * @param mixed $posX
+     * Set posY
+     *
+     * @param float $posY
+     * @return Structure
      */
-    public function setPosX($posX)
+    public function setPosY($posY)
     {
-        $this->posX = $posX;
+        $this->posY = $posY;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get posY
+     *
+     * @return float
      */
     public function getPosY()
     {
@@ -144,15 +171,22 @@ class Structure
     }
 
     /**
-     * @param mixed $posY
+     * Set width
+     *
+     * @param float $width
+     * @return Structure
      */
-    public function setPosY($posY)
+    public function setWidth($width)
     {
-        $this->posY = $posY;
+        $this->width = $width;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get width
+     *
+     * @return float
      */
     public function getWidth()
     {
@@ -160,15 +194,22 @@ class Structure
     }
 
     /**
-     * @param mixed $width
+     * Set height
+     *
+     * @param float $height
+     * @return Structure
      */
-    public function setWidth($width)
+    public function setHeight($height)
     {
-        $this->width = $width;
+        $this->height = $height;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get height
+     *
+     * @return float
      */
     public function getHeight()
     {
@@ -176,16 +217,22 @@ class Structure
     }
 
     /**
-     * @param mixed $height
+     * Set description
+     *
+     * @param string $description
+     * @return Structure
      */
-    public function setHeight($height)
+    public function setDescription($description)
     {
-        $this->height = $height;
+        $this->description = $description;
+
+        return $this;
     }
 
-
     /**
-     * @return mixed
+     * Get description
+     *
+     * @return string
      */
     public function getDescription()
     {
@@ -193,42 +240,59 @@ class Structure
     }
 
     /**
-     * @param mixed $description
-     * @return mixed
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-        return $this;
-    }
-
-    /**
-     * Add user
-     * @param User $user
+     * Add users
+     *
+     * @param \App\Entity\UserStructure $users
      * @return Structure
      */
-    public function addUser(User $user)
+    public function addUser(\App\Entity\UserStructure $users)
     {
-        $this->users[] = $user;
+        $this->users[] = $users;
+
         return $this;
     }
 
     /**
-     * Remove user
-     * @param User $user
+     * Remove users
+     *
+     * @param \App\Entity\UserStructure $users
      */
-    public function removeUser(User $user)
+    public function removeUser(\App\Entity\UserStructure $users)
     {
-        $this->users->removeElement($user);
+        $this->users->removeElement($users);
     }
 
     /**
      * Get users
-     * @return ArrayCollection $users
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set version
+     *
+     * @param \App\Entity\Version $version
+     * @return Structure
+     */
+    public function setVersion(\App\Entity\Version $version = null)
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
+     * Get version
+     *
+     * @return \App\Entity\Version
+     */
+    public function getVersion()
+    {
+        return $this->version;
     }
 
 }
