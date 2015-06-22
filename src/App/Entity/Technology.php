@@ -32,4 +32,60 @@ class Technology {
 
     }
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set damage
+     *
+     * @param integer $damage
+     * @return Technology
+     */
+    public function setDamage($damage)
+    {
+        $this->damage = $damage;
+
+        return $this;
+    }
+
+    /**
+     * Get damage
+     *
+     * @return integer
+     */
+    public function getDamage()
+    {
+        return $this->damage;
+    }
+
+    /**
+     * Set card
+     *
+     * @param \App\Entity\Card $card
+     * @return Technology
+     */
+    public function setCard(\App\Entity\Card $card = null)
+    {
+        $this->card = $card;
+
+        return $this;
+    }
+
+    /**
+     * Get card
+     *
+     * @return \App\Entity\Card
+     */
+    public function getCard()
+    {
+        return $this->card;
+    }
+
 }
