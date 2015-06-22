@@ -49,13 +49,13 @@ class Leader {
      * Constructor
      */
     public function __construct(){
-        $this->users = new ArrayCollection();
         $this->decks = new ArrayCollection();
     }
 
     /**
      * Get id
-     * @return integer 
+     *
+     * @return integer
      */
     public function getId()
     {
@@ -64,18 +64,21 @@ class Leader {
 
     /**
      * Set name
+     *
      * @param string $name
-     * @return Device
+     * @return Leader
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
      * Get name
-     * @return string 
+     *
+     * @return string
      */
     public function getName()
     {
@@ -83,7 +86,22 @@ class Leader {
     }
 
     /**
-     * @return mixed
+     * Set description
+     *
+     * @param string $description
+     * @return Leader
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
      */
     public function getDescription()
     {
@@ -91,63 +109,22 @@ class Leader {
     }
 
     /**
-     * @param mixed $description
+     * Set effect
+     *
+     * @param string $effect
+     * @return Leader
      */
-    public function setDescription($description)
+    public function setEffect($effect)
     {
-        $this->description = $description;
+        $this->effect = $effect;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
-    public function getGame()
-    {
-        return $this->game;
-    }
-
-    /**
-     * @param mixed $game
-     */
-    public function setGame($game)
-    {
-        $this->game = $game;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @param mixed $price
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEnergy()
-    {
-        return $this->energy;
-    }
-
-    /**
-     * @param mixed $energy
-     */
-    public function setEnergy($energy)
-    {
-        $this->energy = $energy;
-    }
-
-    /**
-     * @return mixed
+     * Get effect
+     *
+     * @return string
      */
     public function getEffect()
     {
@@ -155,65 +132,78 @@ class Leader {
     }
 
     /**
-     * @param mixed $effect
-     */
-    public function setEffect($effect)
-    {
-        $this->effect = $effect;
-    }
-
-    /**
-     * Add user
-     * @param User $user
-     * @return Device
-     */
-    public function addUser(User $user)
-    {
-        $this->users[] = $user;
-        return $this;
-    }
-
-    /**
-     * Remove user
-     * @param User $user
-     */
-    public function removeUser(User $user)
-    {
-        $this->users->removeElement($user);
-    }
-
-    /**
-     * Get users
-     * @return ArrayCollection $users
-     */
-    public function getUsers()
-    {
-        return $this->users;
-    }
-
-    /**
-     * Add deck
-     * @param Deck $deck
+     * Set energy
+     *
+     * @param integer $energy
      * @return Leader
      */
-    public function addDeck(Deck $deck)
+    public function setEnergy($energy)
     {
-        $this->decks[] = $deck;
+        $this->energy = $energy;
+
         return $this;
     }
 
     /**
-     * Remove deck
-     * @param Deck $deck
+     * Get energy
+     *
+     * @return integer
      */
-    public function removeDeck(Deck $deck)
+    public function getEnergy()
     {
-        $this->decks->removeElement($deck);
+        return $this->energy;
     }
 
     /**
-     * Get users
-     * @return ArrayCollection $users
+     * Set price
+     *
+     * @param integer $price
+     * @return Leader
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Add decks
+     *
+     * @param \App\Entity\Deck $decks
+     * @return Leader
+     */
+    public function addDeck(\App\Entity\Deck $decks)
+    {
+        $this->decks[] = $decks;
+
+        return $this;
+    }
+
+    /**
+     * Remove decks
+     *
+     * @param \App\Entity\Deck $decks
+     */
+    public function removeDeck(\App\Entity\Deck $decks)
+    {
+        $this->decks->removeElement($decks);
+    }
+
+    /**
+     * Get decks
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDecks()
     {

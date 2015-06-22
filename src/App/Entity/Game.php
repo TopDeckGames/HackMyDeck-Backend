@@ -61,15 +61,9 @@ class Game
     }
 
     /**
-     * @param $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
+     * Get id
+     *
+     * @return integer
      */
     public function getId()
     {
@@ -77,35 +71,22 @@ class Game
     }
 
     /**
-     * @param $leader
-     * @return mixed
-     */
-    public function setLeader($leader)
-    {
-        $this->leader = $leader;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLeader()
-    {
-        return $this->leader;
-    }
-
-    /**
-     * @param mixed $created
-     * @return mixed
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Game
      */
     public function setCreated($created)
     {
         $this->created = $created;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get created
+     *
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -113,7 +94,22 @@ class Game
     }
 
     /**
-     * @return mixed
+     * Set totalDamage
+     *
+     * @param integer $totalDamage
+     * @return Game
+     */
+    public function setTotalDamage($totalDamage)
+    {
+        $this->totalDamage = $totalDamage;
+
+        return $this;
+    }
+
+    /**
+     * Get totalDamage
+     *
+     * @return integer
      */
     public function getTotalDamage()
     {
@@ -121,17 +117,22 @@ class Game
     }
 
     /**
-     * @param mixed $totalDamage
-     * @return mixed
+     * Set totalUnit
+     *
+     * @param integer $totalUnit
+     * @return Game
      */
-    public function setTotalDamage($totalDamage)
+    public function setTotalUnit($totalUnit)
     {
-        $this->totalDamage = $totalDamage;
+        $this->totalUnit = $totalUnit;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get totalUnit
+     *
+     * @return integer
      */
     public function getTotalUnit()
     {
@@ -139,17 +140,22 @@ class Game
     }
 
     /**
-     * @param mixed $totalUnit
-     * @return mixed
+     * Set totalTechno
+     *
+     * @param integer $totalTechno
+     * @return Game
      */
-    public function setTotalUnit($totalUnit)
+    public function setTotalTechno($totalTechno)
     {
-        $this->totalUnit = $totalUnit;
+        $this->totalTechno = $totalTechno;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get totalTechno
+     *
+     * @return integer
      */
     public function getTotalTechno()
     {
@@ -157,29 +163,72 @@ class Game
     }
 
     /**
-     * @param mixed $totalTechno
-     * @return mixed
-     */
-    public function setTotalTechno($totalTechno)
-    {
-        $this->totalTechno = $totalTechno;
-        return $this;
-    }
-
-    /**
-     * @param $winner
+     * Set winner
+     *
+     * @param integer $winner
+     * @return Game
      */
     public function setWinner($winner)
     {
         $this->winner = $winner;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get winner
+     *
+     * @return integer
      */
     public function getWinner()
     {
         return $this->winner;
+    }
+
+    /**
+     * Set firstToPlay
+     *
+     * @param \App\Entity\Deck $firstToPlay
+     * @return Game
+     */
+    public function setFirstToPlay(\App\Entity\Deck $firstToPlay = null)
+    {
+        $this->firstToPlay = $firstToPlay;
+
+        return $this;
+    }
+
+    /**
+     * Get firstToPlay
+     *
+     * @return \App\Entity\Deck
+     */
+    public function getFirstToPlay()
+    {
+        return $this->firstToPlay;
+    }
+
+    /**
+     * Set secondToPlay
+     *
+     * @param \App\Entity\Deck $secondToPlay
+     * @return Game
+     */
+    public function setSecondToPlay(\App\Entity\Deck $secondToPlay = null)
+    {
+        $this->secondToPlay = $secondToPlay;
+
+        return $this;
+    }
+
+    /**
+     * Get secondToPlay
+     *
+     * @return \App\Entity\Deck
+     */
+    public function getSecondToPlay()
+    {
+        return $this->secondToPlay;
     }
 
 }
