@@ -54,55 +54,34 @@ class UserQuest
     public function __construct() {
         $this->setCreated(new \DateTime("now"));
     }
-    
+
     /**
-     * @param $user
-     * @return mixed
+     * Get id
+     *
+     * @return integer
      */
-    public function setUser($user)
+    public function getId()
     {
-        $this->user = $user;
-        return $this;
+        return $this->id;
     }
 
     /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param $quest
-     * @return mixed
-     */
-    public function setQuest($quest)
-    {
-        $this->quest = $quest;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getQuest()
-    {
-        return $this->quest;
-    }
-    
-    /**
-     * @param mixed $created
-     * @return mixed
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return UserQuest
      */
     public function setCreated($created)
     {
         $this->created = $created;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get created
+     *
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -110,17 +89,22 @@ class UserQuest
     }
 
     /**
-     * @param mixed $updated
-     * @return mixed
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return UserQuest
      */
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get updated
+     *
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -128,24 +112,44 @@ class UserQuest
     }
 
     /**
+     * Set isDone
+     *
+     * @param boolean $isDone
+     * @return UserQuest
+     */
+    public function setIsDone($isDone)
+    {
+        $this->isDone = $isDone;
+
+        return $this;
+    }
+
+    /**
+     * Get isDone
+     *
      * @return boolean
      */
-    public function getisDone()
+    public function getIsDone()
     {
         return $this->isDone;
     }
 
     /**
-     * @param boolean $isDone
-     * @return mixed
+     * Set isRejected
+     *
+     * @param boolean $isRejected
+     * @return UserQuest
      */
-    public function setIsDone($isDone)
+    public function setIsRejected($isRejected)
     {
-        $this->isDone = $isDone;
+        $this->isRejected = $isRejected;
+
         return $this;
     }
 
     /**
+     * Get isRejected
+     *
      * @return boolean
      */
     public function getIsRejected()
@@ -154,13 +158,49 @@ class UserQuest
     }
 
     /**
-     * @param boolean isRejected
-     * @return mixed
+     * Set user
+     *
+     * @param \App\Entity\User $user
+     * @return UserQuest
      */
-    public function setIsRejected($isRejected)
+    public function setUser(\App\Entity\User $user = null)
     {
-        $this->isRejected = $isRejected;
+        $this->user = $user;
+
         return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \App\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set quest
+     *
+     * @param \App\Entity\Quest $quest
+     * @return UserQuest
+     */
+    public function setQuest(\App\Entity\Quest $quest = null)
+    {
+        $this->quest = $quest;
+
+        return $this;
+    }
+
+    /**
+     * Get quest
+     *
+     * @return \App\Entity\Quest
+     */
+    public function getQuest()
+    {
+        return $this->quest;
     }
 
     /**

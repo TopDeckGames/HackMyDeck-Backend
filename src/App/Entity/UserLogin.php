@@ -45,77 +45,107 @@ class UserLogin
     public function __construct() {
         $this->setCreated(new \DateTime("now"));
     }
-    
+
     /**
-     * @param $user
-     * @return mixed
+     * Get id
+     *
+     * @return integer
      */
-    public function setUser($user)
+    public function getId()
     {
-        $this->user = $user;
-        return $this;
+        return $this->id;
     }
 
     /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-    
-    /**
-     * @param mixed $created
-     * @return mixed
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return UserLogin
      */
     public function setCreated($created)
     {
         $this->created = $created;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get created
+     *
+     * @return \DateTime
      */
     public function getCreated()
     {
         return $this->created;
     }
-    
+
     /**
-     * @param $action
-     * @return mixed
+     * Set action
+     *
+     * @param string $action
+     * @return UserLogin
      */
     public function setAction($action)
     {
         $this->action = $action;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get action
+     *
+     * @return string
      */
     public function getAction()
     {
         return $this->action;
     }
-    
+
     /**
-     * @param $context
-     * @return mixed
+     * Set context
+     *
+     * @param string $context
+     * @return UserLogin
      */
     public function setContext($context)
     {
         $this->context = $context;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get context
+     *
+     * @return string
      */
     public function getContext()
     {
         return $this->context;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \App\Entity\User $user
+     * @return UserLogin
+     */
+    public function setUser(\App\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \App\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
     
 }

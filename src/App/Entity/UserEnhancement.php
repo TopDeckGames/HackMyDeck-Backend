@@ -54,38 +54,34 @@ class UserEnhancement
     public function __construct() {
         $this->setCreated(new \DateTime("now"));
     }
-    
+
     /**
-     * @param $user
-     * @return mixed
+     * Get id
+     *
+     * @return integer
      */
-    public function setUser($user)
+    public function getId()
     {
-        $this->user = $user;
-        return $this;
+        return $this->id;
     }
 
     /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-
-    /**
-     * @param mixed $created
-     * @return mixed
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return UserEnhancement
      */
     public function setCreated($created)
     {
         $this->created = $created;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get created
+     *
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -93,17 +89,22 @@ class UserEnhancement
     }
 
     /**
-     * @param mixed $updated
-     * @return mixed
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return UserEnhancement
      */
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get updated
+     *
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -111,6 +112,21 @@ class UserEnhancement
     }
 
     /**
+     * Set unlocked
+     *
+     * @param boolean $unlocked
+     * @return UserEnhancement
+     */
+    public function setUnlocked($unlocked)
+    {
+        $this->unlocked = $unlocked;
+
+        return $this;
+    }
+
+    /**
+     * Get unlocked
+     *
      * @return boolean
      */
     public function getUnlocked()
@@ -119,17 +135,22 @@ class UserEnhancement
     }
 
     /**
-     * @param boolean $unlocked
-     * @return mixed
+     * Set onCurrentResearch
+     *
+     * @param boolean $onCurrentResearch
+     * @return UserEnhancement
      */
-    public function setUnlocked($unlocked)
+    public function setOnCurrentResearch($onCurrentResearch)
     {
-        $this->unlocked = $unlocked;
+        $this->onCurrentResearch = $onCurrentResearch;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get onCurrentResearch
+     *
+     * @return boolean
      */
     public function getOnCurrentResearch()
     {
@@ -137,11 +158,49 @@ class UserEnhancement
     }
 
     /**
-     * @param mixed $onCurrentResearch
+     * Set user
+     *
+     * @param \App\Entity\User $user
+     * @return UserEnhancement
      */
-    public function setOnCurrentResearch($onCurrentResearch)
+    public function setUser(\App\Entity\User $user = null)
     {
-        $this->onCurrentResearch = $onCurrentResearch;
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \App\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set enhancement
+     *
+     * @param \App\Entity\Enhancement $enhancement
+     * @return UserEnhancement
+     */
+    public function setEnhancement(\App\Entity\Enhancement $enhancement = null)
+    {
+        $this->enhancement = $enhancement;
+
+        return $this;
+    }
+
+    /**
+     * Get enhancement
+     *
+     * @return \App\Entity\Enhancement
+     */
+    public function getEnhancement()
+    {
+        return $this->enhancement;
     }
 
     /**

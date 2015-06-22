@@ -39,44 +39,33 @@ class UserCard
     public function __construct() {
 
     }
-    
+
     /**
-     * @param $user
-     * @return mixed
+     * Get id
+     *
+     * @return integer
      */
-    public function setUser($user)
+    public function getId()
     {
-        $this->user = $user;
+        return $this->id;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param integer $quantity
+     * @return UserCard
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
         return $this;
     }
 
     /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param $card
-     * @return mixed
-     */
-    public function setCard($card)
-    {
-        $this->card = $card;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCard()
-    {
-        return $this->card;
-    }
-
-    /**
+     * Get quantity
+     *
      * @return integer
      */
     public function getQuantity()
@@ -85,13 +74,49 @@ class UserCard
     }
 
     /**
-     * @param integer $quantity
-     * @return mixed
+     * Set user
+     *
+     * @param \App\Entity\User $user
+     * @return UserCard
      */
-    public function setQuantity($quantity)
+    public function setUser(\App\Entity\User $user = null)
     {
-        $this->quantity = $quantity;
+        $this->user = $user;
+
         return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \App\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set card
+     *
+     * @param \App\Entity\Card $card
+     * @return UserCard
+     */
+    public function setCard(\App\Entity\Card $card = null)
+    {
+        $this->card = $card;
+
+        return $this;
+    }
+
+    /**
+     * Get card
+     *
+     * @return \App\Entity\Card
+     */
+    public function getCard()
+    {
+        return $this->card;
     }
 
 }

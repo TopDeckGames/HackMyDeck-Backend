@@ -54,55 +54,34 @@ class UserStructure
     public function __construct() {
         $this->setCreated(new \DateTime("now"));
     }
-    
+
     /**
-     * @param $user
-     * @return mixed
+     * Get id
+     *
+     * @return integer
      */
-    public function setUser($user)
+    public function getId()
     {
-        $this->user = $user;
-        return $this;
+        return $this->id;
     }
 
     /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param $structure
-     * @return mixed
-     */
-    public function setStructure($structure)
-    {
-        $this->structure = $structure;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStructure()
-    {
-        return $this->structure;
-    }
-    
-    /**
-     * @param mixed $created
-     * @return mixed
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return UserStructure
      */
     public function setCreated($created)
     {
         $this->created = $created;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get created
+     *
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -110,7 +89,22 @@ class UserStructure
     }
 
     /**
-     * @return mixed
+     * Set effectif
+     *
+     * @param integer $effectif
+     * @return UserStructure
+     */
+    public function setEffectif($effectif)
+    {
+        $this->effectif = $effectif;
+
+        return $this;
+    }
+
+    /**
+     * Get effectif
+     *
+     * @return integer
      */
     public function getEffectif()
     {
@@ -118,17 +112,22 @@ class UserStructure
     }
 
     /**
-     * @param mixed $effectif
-     * @return mixed
+     * Set level
+     *
+     * @param integer $level
+     * @return UserStructure
      */
-    public function setEffectif($effectif)
+    public function setLevel($level)
     {
-        $this->effectif = $effectif;
+        $this->level = $level;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get level
+     *
+     * @return integer
      */
     public function getLevel()
     {
@@ -136,17 +135,22 @@ class UserStructure
     }
 
     /**
-     * @param mixed $level
-     * @return mixed
+     * Set locked
+     *
+     * @param boolean $locked
+     * @return UserStructure
      */
-    public function setLevel($level)
+    public function setLocked($locked)
     {
-        $this->level = $level;
+        $this->locked = $locked;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get locked
+     *
+     * @return boolean
      */
     public function getLocked()
     {
@@ -154,13 +158,49 @@ class UserStructure
     }
 
     /**
-     * @param mixed $locked
-     * @return mixed
+     * Set user
+     *
+     * @param \App\Entity\User $user
+     * @return UserStructure
      */
-    public function setLocked($locked)
+    public function setUser(\App\Entity\User $user = null)
     {
-        $this->locked = $locked;
+        $this->user = $user;
+
         return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \App\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set structure
+     *
+     * @param \App\Entity\Structure $structure
+     * @return UserStructure
+     */
+    public function setStructure(\App\Entity\Structure $structure = null)
+    {
+        $this->structure = $structure;
+
+        return $this;
+    }
+
+    /**
+     * Get structure
+     *
+     * @return \App\Entity\Structure
+     */
+    public function getStructure()
+    {
+        return $this->structure;
     }
     
 }

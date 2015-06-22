@@ -152,9 +152,14 @@ class User implements AdvancedUserInterface, \Serializable
         $this->active = true;
         $this->salt = md5(uniqid(null, true));
         $this->experience = 0;
-        $this->logins = new ArrayCollection();
-        $this->devices = new ArrayCollection();
-        $this->decks = new ArrayCollection();
+        $this->logins = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->structures = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->quests = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->skilltrees = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enhancements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cards = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->devices = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->decks = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
