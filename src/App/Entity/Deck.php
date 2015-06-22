@@ -30,9 +30,14 @@ class Deck {
     private $color;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Game",mappedBy="deck")
+     * @ORM\OneToMany(targetEntity="App\Entity\Game", mappedBy="firstToPlay")
      */
     protected $games;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Game", mappedBy="secondToPlay")
+     */
+    protected $gamesSecond;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="decks")

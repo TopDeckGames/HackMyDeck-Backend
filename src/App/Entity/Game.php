@@ -49,7 +49,7 @@ class Game
     protected $firstToPlay;
 
     /**
-     * @ORM\ManytoOne(targetEntity="App\Entity\Deck", inversedBy="games")
+     * @ORM\ManytoOne(targetEntity="App\Entity\Deck", inversedBy="gamesSecond")
      */
     protected $secondToPlay;
     

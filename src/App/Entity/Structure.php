@@ -56,7 +56,7 @@ class Structure
     private $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Version", inversedBy="Structure")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Version", inversedBy="structures")
      */
     private $version;
 
